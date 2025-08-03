@@ -9,7 +9,7 @@ class EPAEchoScraper:
     
     def __init__(self):
         self.base_url = "https://echo.epa.gov/tools/web-services/detailed-facility-report"
-        self.search_url = "https://echo.epa.gov/tools/web-services/facility-search"
+        self.search_url = "https://epaecho.epa.gov/echo/echo_rest_services.get_facilities"
         self.output_dir = "scraped_data"
         os.makedirs(self.output_dir, exist_ok=True)
         
