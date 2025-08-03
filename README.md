@@ -1,4 +1,4 @@
-# PermitWatch Scrapers
+# PermitWatch
 
 Private automated data collection for environmental compliance monitoring.
 
