@@ -23,8 +23,8 @@ jobs:
         pip install requests pandas beautifulsoup4
         pip install lxml openpyxl
     
-    - name: Run EPA ECHO scraper
-      run: python epa_echo_scraper.py
+    # - name: Run EPA ECHO scraper
+    #   run: python epa_echo_scraper.py
       
     - name: Run state scrapers
       run: python multi_state_scraper.py
