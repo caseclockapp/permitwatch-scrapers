@@ -1,13 +1,13 @@
-name: EPA ECHO Daily Scraper
+name: Multi-State Environmental Scraper
 
 on:
   schedule:
-    # Runs at 2 AM EST every day
-    - cron: '0 7 * * *'
-  workflow_dispatch:  # Allows manual trigger
+    # Runs at 3 AM EST daily
+    - cron: '0 8 * * *'
+  workflow_dispatch:
 
 jobs:
-  scrape:
+  scrape-violations:
     runs-on: ubuntu-latest
     
     steps:
@@ -20,14 +20,67 @@ jobs:
     
     - name: Install dependencies
       run: |
-        pip install requests pandas
+        pip install requests pandas beautifulsoup4
+        pip install lxml openpyxl
     
-    - name: Run EPA scraper
+    - name: Run EPA ECHO scraper
       run: python epa_echo_scraper.py
+      
+    - name: Run state scrapers
+      run: python multi_state_scraper.py
     
-    - name: Commit and push if changed
+    - name: Combine and deduplicate data
+      run: |
+        python - <<EOF
+        import pandas as pd
+        import glob
+        from datetime import datetime
+        
+        # Find all today's CSV files
+        today = datetime.now().strftime("%Y%m%d")
+        files = glob.glob(f"scraped_data/*_{today}*.csv")
+        
+        # Combine by state
+        for state in ["VA", "WV", "PA", "MD"]:
+            state_files = [f for f in files if f"/{state}_" in f or f"/ECHO_{state}" in f]
+            if state_files:
+                dfs = [pd.read_csv(f) for f in state_files]
+                combined = pd.concat(dfs, ignore_index=True)
+                combined.drop_duplicates(inplace=True)
+                combined.to_csv(f"scraped_data/{state}_combined_{today}.csv", index=False)
+                print(f"Combined {len(state_files)} files for {state}: {len(combined)} total records")
+        EOF
+    
+    - name: Generate summary report
+      run: |
+        python - <<EOF
+        import pandas as pd
+        import glob
+        from datetime import datetime
+        
+        today = datetime.now().strftime("%Y%m%d")
+        summary = []
+        
+        for state in ["VA", "WV", "PA", "MD"]:
+            try:
+                df = pd.read_csv(f"scraped_data/{state}_combined_{today}.csv")
+                summary.append({
+                    'State': state,
+                    'Total Violations': len(df),
+                    'Date': today
+                })
+            except:
+                pass
+                
+        if summary:
+            summary_df = pd.DataFrame(summary)
+            summary_df.to_csv(f"scraped_data/daily_summary_{today}.csv", index=False)
+            print(summary_df.to_string())
+        EOF
+    
+    - name: Commit and push
       run: |
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         git config --global user.name "github-actions[bot]"
         git add scraped_data/*.csv
-        git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update: EPA violations $(date +'%Y-%m-%d')" && git push)
+        git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update: Multi-state violations $(date +'%Y-%m-%d')" && git push)
