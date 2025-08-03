@@ -1,98 +1,89 @@
-import requests
-import zipfile
-import pandas as pd
 import os
+import pandas as pd
 from datetime import datetime
 
-def download_and_extract_echo_data():
-    """Download ECHO bulk data files and extract them"""
+def process_echo_data():
+    """Process existing ECHO data files in scraped_data folder"""
     
-    # Create directories
-    os.makedirs('monthly_echo_downloads', exist_ok=True)
+    print("Starting ECHO data processing...")
+    
+    # Create output directory
     os.makedirs('outputs', exist_ok=True)
     
-    # Download ECHO_EXPORTER.zip
-    print("Downloading ECHO_EXPORTER.zip...")
-    url = "https://echo.epa.gov/files/echodownloads/ECHO_EXPORTER.zip"
-    response = requests.get(url, stream=True)
+    # Look for CSV files in scraped_data folder
+    scraped_data_dir = 'scraped_data'
     
-    zip_path = 'monthly_echo_downloads/ECHO_EXPORTER.zip'
-    with open(zip_path, 'wb') as f:
-        for chunk in response.iter_content(chunk_size=8192):
-            f.write(chunk)
+    if not os.path.exists(scraped_data_dir):
+        print(f"Error: {scraped_data_dir} folder not found!")
+        return False
     
-    # Extract the zip file
-    print("Extracting files...")
-    with zipfile.ZipFile(zip_path, 'r') as zip_ref:
-        zip_ref.extractall('monthly_echo_downloads/')
+    # Find all CSV files
+    csv_files = [f for f in os.listdir(scraped_data_dir) if f.endswith('.csv')]
     
-    return True
-
-def process_water_violations():
-    """Process ECHO data to extract water violations"""
+    if not csv_files:
+        print("No CSV files found in scraped_data folder!")
+        return False
     
-    print("Processing water violation data...")
+    print(f"Found {len(csv_files)} CSV files to process")
     
-    # Look for NPDES files (water permits)
-    files_to_process = [
-        'NPDES_QNCR_HISTORY.csv',  # Quarterly non-compliance reports
-        'NPDES_EFF_VIOLATIONS.csv',  # Effluent violations
-        'NPDES_FORMAL_ENFORCEMENT_ACTIONS.csv',  # Formal actions
-        'NPDES_INFORMAL_ENFORCEMENT_ACTIONS.csv',  # Informal actions
-        'NPDES_FACILITIES.csv'  # Facility information
-    ]
-    
-    combined_data = []
-    
-    for filename in files_to_process:
-        filepath = f'monthly_echo_downloads/{filename}'
-        if os.path.exists(filepath):
+    # Process water violation files
+    water_files = []
+    for filename in csv_files:
+        if any(term in filename.lower() for term in ['violation', 'water', 'cwa', 'npdes']):
+            filepath = os.path.join(scraped_data_dir, filename)
             print(f"Processing {filename}...")
+            
             try:
-                # Read CSV with error handling
                 df = pd.read_csv(filepath, low_memory=False, encoding='latin-1')
-                df['source_file'] = filename
-                combined_data.append(df)
+                water_files.append({
+                    'filename': filename,
+                    'data': df,
+                    'rows': len(df)
+                })
+                print(f"  - Loaded {len(df)} rows")
             except Exception as e:
-                print(f"Error reading {filename}: {e}")
+                print(f"  - Error loading {filename}: {e}")
     
-    if combined_data:
-        # Combine all data
-        print("Combining data...")
-        result = pd.concat(combined_data, ignore_index=True)
-        
-        # Save processed data
-        output_file = f'outputs/water_violations_{datetime.now().strftime("%Y%m%d")}.csv'
-        result.to_csv(output_file, index=False)
-        print(f"Saved processed data to {output_file}")
-        
+    if water_files:
         # Create summary
-        print(f"\nSummary:")
-        print(f"Total records processed: {len(result)}")
-        print(f"Files processed: {len(combined_data)}")
+        print("\n=== SUMMARY ===")
+        print(f"Successfully processed {len(water_files)} water-related files:")
         
-        return output_file
+        for file_info in water_files:
+            print(f"  - {file_info['filename']}: {file_info['rows']} rows")
+        
+        # Save a combined summary file
+        summary_data = []
+        for file_info in water_files:
+            summary_data.append({
+                'source_file': file_info['filename'],
+                'record_count': file_info['rows'],
+                'processed_date': datetime.now().strftime("%Y-%m-%d")
+            })
+        
+        summary_df = pd.DataFrame(summary_data)
+        summary_file = f'outputs/processing_summary_{datetime.now().strftime("%Y%m%d")}.csv'
+        summary_df.to_csv(summary_file, index=False)
+        print(f"\nSaved summary to: {summary_file}")
+        
+        return True
     else:
-        print("No data files found to process")
-        return None
+        print("No water violation files found to process!")
+        return False
 
 def main():
-    """Main function to run the entire process"""
-    
-    print("Starting ECHO data processing for PermitWatch...")
-    print("=" * 50)
-    
-    # Download and extract data
-    if download_and_extract_echo_data():
-        # Process the data
-        output_file = process_water_violations()
-        
-        if output_file:
-            print("\n✅ Success! Data processed and saved.")
+    """Main function"""
+    try:
+        success = process_echo_data()
+        if success:
+            print("\n✅ Processing completed successfully!")
+            exit(0)
         else:
-            print("\n❌ Error: No data was processed.")
-    else:
-        print("\n❌ Error: Failed to download data.")
+            print("\n❌ Processing failed!")
+            exit(1)
+    except Exception as e:
+        print(f"\n❌ Error: {e}")
+        exit(1)
 
 if __name__ == "__main__":
     main()
