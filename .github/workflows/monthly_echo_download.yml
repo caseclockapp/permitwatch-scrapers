@@ -1,0 +1,205 @@
+import requests
+import os
+import zipfile
+from datetime import datetime
+import pandas as pd
+
+class ECHOBulkDownloader:
+    """Downloads EPA ECHO bulk data files (allowed and encouraged by EPA)"""
+    
+    def __init__(self):
+        self.base_url = "https://echo.epa.gov/files/echodownloads"
+        self.output_dir = "echo_bulk_data"
+        os.makedirs(self.output_dir, exist_ok=True)
+        
+        # ECHO provides these specific bulk download files
+        self.download_files = {
+            # National summary file with all facilities
+            "ECHO_EXPORTER": "ECHO_EXPORTER.zip",
+            
+            # State-specific violation files (if available)
+            "NPDES_QNCR": "NPDES_QNCR_HISTORY.zip",  # Quarterly Noncompliance Reports
+            "ENFORCEMENT": "ICIS_ENFORCEMENT_ACTIONS.zip",
+            
+            # Water quality specific
+            "CWA_VIOLATIONS": "CWA_EFFLUENT_VIOLATIONS.zip",
+            "CWA_INSPECTIONS": "CWA_INSPECTIONS.zip"
+        }
+        
+    def download_file(self, file_name, file_url):
+        """Download a single bulk file from ECHO"""
+        try:
+            print(f"\nDownloading {file_name}...")
+            print(f"URL: {file_url}")
+            
+            # Download with progress indication
+            response = requests.get(file_url, stream=True)
+            response.raise_for_status()
+            
+            # Save to disk
+            file_path = os.path.join(self.output_dir, file_name)
+            total_size = int(response.headers.get('content-length', 0))
+            
+            with open(file_path, 'wb') as f:
+                downloaded = 0
+                for chunk in response.iter_content(chunk_size=8192):
+                    if chunk:
+                        f.write(chunk)
+                        downloaded += len(chunk)
+                        if total_size > 0:
+                            percent = (downloaded / total_size) * 100
+                            print(f"Progress: {percent:.1f}%", end='\r')
+            
+            print(f"\n✓ Downloaded {file_name} successfully!")
+            return file_path
+            
+        except Exception as e:
+            print(f"✗ Error downloading {file_name}: {e}")
+            return None
+    
+    def extract_zip(self, zip_path):
+        """Extract ZIP file"""
+        try:
+            extract_dir = zip_path.replace('.zip', '')
+            os.makedirs(extract_dir, exist_ok=True)
+            
+            print(f"Extracting {os.path.basename(zip_path)}...")
+            with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+                zip_ref.extractall(extract_dir)
+            
+            print(f"✓ Extracted to {extract_dir}")
+            return extract_dir
+            
+        except Exception as e:
+            print(f"✗ Error extracting: {e}")
+            return None
+    
+    def filter_by_states(self, csv_path, states=["MD", "VA", "PA", "WV"]):
+        """Filter bulk data for specific states"""
+        try:
+            print(f"\nFiltering data for states: {', '.join(states)}")
+            
+            # Read CSV in chunks for large files
+            chunk_list = []
+            for chunk in pd.read_csv(csv_path, chunksize=10000, low_memory=False):
+                # Try different column names for state
+                state_columns = ['FAC_STATE', 'STATE', 'State', 'DFR_STATE']
+                state_col = None
+                
+                for col in state_columns:
+                    if col in chunk.columns:
+                        state_col = col
+                        break
+                
+                if state_col:
+                    filtered = chunk[chunk[state_col].isin(states)]
+                    chunk_list.append(filtered)
+            
+            # Combine all chunks
+            if chunk_list:
+                result = pd.concat(chunk_list, ignore_index=True)
+                print(f"Found {len(result)} records for selected states")
+                return result
+            else:
+                print("No state column found in data")
+                return None
+                
+        except Exception as e:
+            print(f"Error filtering data: {e}")
+            return None
+    
+    def download_echo_exporter(self):
+        """Download the main ECHO Exporter file (comprehensive facility data)"""
+        # The main ECHO Exporter URL
+        echo_exporter_url = f"{self.base_url}/ECHO_EXPORTER.zip"
+        
+        # Download the file
+        zip_path = self.download_file("ECHO_EXPORTER.zip", echo_exporter_url)
+        
+        if zip_path:
+            # Extract it
+            extract_dir = self.extract_zip(zip_path)
+            
+            if extract_dir:
+                # Find the CSV file
+                csv_files = [f for f in os.listdir(extract_dir) if f.endswith('.csv')]
+                
+                if csv_files:
+                    csv_path = os.path.join(extract_dir, csv_files[0])
+                    
+                    # Filter for our states
+                    filtered_data = self.filter_by_states(csv_path)
+                    
+                    if filtered_data is not None:
+                        # Save filtered data
+                        timestamp = datetime.now().strftime("%Y%m%d")
+                        output_file = os.path.join(self.output_dir, f"ECHO_filtered_{timestamp}.csv")
+                        filtered_data.to_csv(output_file, index=False)
+                        print(f"\n✓ Saved filtered data to {output_file}")
+                        
+                        # Clean up large original file
+                        os.remove(zip_path)
+                        print("✓ Cleaned up original ZIP file")
+    
+    def run_monthly_download(self):
+        """Main function to run monthly"""
+        print("="*70)
+        print("EPA ECHO Bulk Data Downloader")
+        print(f"Started at: {datetime.now()}")
+        print("="*70)
+        
+        print("\nThis downloads EPA's official bulk data files.")
+        print("EPA encourages this method instead of API scraping.")
+        
+        # Download main ECHO Exporter
+        self.download_echo_exporter()
+        
+        # Note: You can add other specific downloads here
+        # For example, NPDES quarterly reports, enforcement actions, etc.
+        
+        print(f"\n{'='*70}")
+        print(f"Download completed at: {datetime.now()}")
+        print(f"Data saved in: {self.output_dir}")
+        print("="*70)
+
+# GitHub Actions workflow for monthly downloads
+GITHUB_WORKFLOW = """
+name: Monthly ECHO Bulk Download
+
+on:
+  schedule:
+    # Run on the 1st of each month at 2 AM EST
+    - cron: '0 7 1 * *'
+  workflow_dispatch:
+
+jobs:
+  download-echo-data:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install dependencies
+      run: |
+        pip install requests pandas
+    
+    - name: Run ECHO bulk downloader
+      run: python echo_bulk_downloader.py
+    
+    - name: Commit and push
+      run: |
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "github-actions[bot]"
+        git add echo_bulk_data/*.csv
+        git commit -m "Monthly ECHO bulk data update $(date +'%Y-%m-%d')" || exit 0
+        git push
+"""
+
+if __name__ == "__main__":
+    downloader = ECHOBulkDownloader()
+    downloader.run_monthly_download()
