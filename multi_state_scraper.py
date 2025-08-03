@@ -7,11 +7,11 @@ import json
 import os
 
 class MultiStateViolationScraper:
-    """Scrapes violations from VA, WV, PA, and MD environmental agencies"""
+    """Scrapes violations from VA, PA, and MD environmental agencies"""
     
     def __init__(self):
         self.output_dir = "scraped_data"
-        self.states = ["VA", "WV", "PA", "MD"]
+        self.states = ["VA", "PA", "MD"]  # Removed WV
         os.makedirs(self.output_dir, exist_ok=True)
         
     def scrape_all_states(self):
@@ -25,10 +25,6 @@ class MultiStateViolationScraper:
         # Virginia
         va_scraper = VirginiaDEQScraper()
         all_results['VA'] = va_scraper.scrape_violations()
-        
-        # West Virginia  
-        wv_scraper = WestVirginiaDEPScraper()
-        all_results['WV'] = wv_scraper.scrape_violations()
         
         # Pennsylvania (using simple version)
         pa_scraper = PennsylvaniaDEPScraper()
@@ -100,51 +96,6 @@ class VirginiaDEQScraper:
             
         except Exception as e:
             print(f"Error scraping VA: {e}")
-            
-        return violations
-
-
-class WestVirginiaDEPScraper:
-    """Scraper for West Virginia DEP data"""
-    
-    def __init__(self):
-        self.base_url = "https://dep.wv.gov"
-        self.data_url = "https://apps.dep.wv.gov/WebApp/_dep/Search/default.aspx"
-        
-    def scrape_violations(self):
-        """Scrape WV DEP violations"""
-        print("\nScraping West Virginia DEP...")
-        violations = []
-        
-        try:
-            # WV DEP has limited online data
-            # Best approach is their downloadable datasets
-            
-            # Check for water quality violations
-            water_url = "https://dep.wv.gov/WWE/Programs/nonptsource/Pages/WQData.aspx"
-            response = requests.get(water_url)
-            soup = BeautifulSoup(response.text, 'html.parser')
-            
-            # Look for data links
-            data_links = soup.find_all('a', text=lambda x: x and 'download' in x.lower())
-            
-            for link in data_links:
-                print(f"Found data link: {link.get('href')}")
-                
-            # WV often requires FOIA for detailed violation data
-            # For now, structure what we'd expect
-            violations = [{
-                'state': 'WV',
-                'facility_name': 'Sample WV Mine',
-                'permit_number': 'WV0000001',
-                'violation_date': '2024-02-01',
-                'violation_type': 'Discharge Monitoring Report',
-                'parameter': 'pH',
-                'status': 'Pending'
-            }]
-            
-        except Exception as e:
-            print(f"Error scraping WV: {e}")
             
         return violations
 
@@ -277,72 +228,12 @@ class MarylandMDEScraper:
         return violations
 
 
-# Additional utility scraper for ECHO data specific to these states
-class EPAEchoStatesScraper:
-    """Get EPA ECHO data for VA, WV, PA, MD"""
-    
-    def __init__(self):
-        self.base_url = "https://echo.epa.gov/tools/web-services/facility-search"
-        self.states = ["VA", "WV", "PA", "MD"]
-        
-    def get_state_violations(self, state):
-        """Get ECHO violations for a specific state"""
-        params = {
-            "output": "JSON",
-            "p_st": state,
-            "p_ptype": "CWA",  # Clean Water Act
-            "p_qiv": "1",  # In violation
-            "responseset": "5000"
-        }
-        
-        try:
-            response = requests.get(self.base_url, params=params)
-            data = response.json()
-            
-            facilities = data.get("Results", {}).get("Facilities", [])
-            
-            violations = []
-            for facility in facilities:
-                violations.append({
-                    'state': state,
-                    'registry_id': facility.get('RegistryId'),
-                    'facility_name': facility.get('CWAName'),
-                    'city': facility.get('CWACity'),
-                    'permit': facility.get('SourceID'),
-                    'qtrs_in_violation': facility.get('CWAQtrsInNC'),
-                    'inspection_count': facility.get('CWAInspectionCount')
-                })
-                
-            return violations
-            
-        except Exception as e:
-            print(f"Error getting ECHO data for {state}: {e}")
-            return []
-
-
 # Main execution
 if __name__ == "__main__":
-    # Run all state scrapers
+    # Run all state scrapers (excluding WV)
     scraper = MultiStateViolationScraper()
     results = scraper.scrape_all_states()
     
-    # Also get EPA ECHO data for comparison
-    echo_scraper = EPAEchoStatesScraper()
-    echo_results = {}
-    
     print("\n" + "="*50)
-    print("Getting EPA ECHO data for comparison...")
-    
-    for state in ["VA", "WV", "PA", "MD"]:
-        echo_data = echo_scraper.get_state_violations(state)
-        echo_results[state] = echo_data
-        print(f"{state}: {len(echo_data)} facilities in violation")
-        
-    # Save ECHO data
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    for state, data in echo_results.items():
-        if data:
-            df = pd.DataFrame(data)
-            filename = f"scraped_data/ECHO_{state}_{timestamp}.csv"
-            df.to_csv(filename, index=False)
-            print(f"Saved ECHO data to {filename}")
+    print("Scraping complete!")
+    print("="*50)
