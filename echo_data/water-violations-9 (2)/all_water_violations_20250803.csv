@@ -1,0 +1,11 @@
+state,facility_name,permit_number,violation_date,violation_type,status,source_file,parameter
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250803_181117.csv,
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250803_181117.csv,Total Nitrogen
+WV,Sample WV Mine,WV0000001,2024-02-01,Discharge Monitoring Report,Pending,WV_violations_20250803_152951.csv,pH
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250803_152951.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250803_181117.csv,
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250803_173741.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250803_173741.csv,
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250803_173741.csv,Total Nitrogen
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250803_152951.csv,Total Nitrogen
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250803_152951.csv,
