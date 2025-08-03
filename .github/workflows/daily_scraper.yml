@@ -40,7 +40,7 @@ jobs:
         today = datetime.now().strftime("%Y%m%d")
         files = glob.glob(f"scraped_data/*_{today}*.csv")
         
-        # Combine by state
+        # Combine by state - removed WV
         for state in ["VA", "PA", "MD"]:
             state_files = [f for f in files if f"/{state}_" in f or f"/ECHO_{state}" in f]
             if state_files:
@@ -49,6 +49,15 @@ jobs:
                 combined.drop_duplicates(inplace=True)
                 combined.to_csv(f"scraped_data/{state}_combined_{today}.csv", index=False)
                 print(f"Combined {len(state_files)} files for {state}: {len(combined)} total records")
+        
+        # Also create combined file for WV from ECHO only
+        wv_files = [f for f in files if "/ECHO_WV" in f]
+        if wv_files:
+            dfs = [pd.read_csv(f) for f in wv_files]
+            combined = pd.concat(dfs, ignore_index=True)
+            combined.drop_duplicates(inplace=True)
+            combined.to_csv(f"scraped_data/WV_combined_{today}.csv", index=False)
+            print(f"Combined {len(wv_files)} ECHO files for WV: {len(combined)} total records")
         EOF
     
     - name: Generate summary report
@@ -61,7 +70,7 @@ jobs:
         today = datetime.now().strftime("%Y%m%d")
         summary = []
         
-        for state in ["VA", "PA", "MD"]:
+        for state in ["VA", "PA", "MD", "WV"]:
             try:
                 df = pd.read_csv(f"scraped_data/{state}_combined_{today}.csv")
                 summary.append({
@@ -83,5 +92,10 @@ jobs:
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         git config --global user.name "github-actions[bot]"
         git add scraped_data/*.csv
-        git pull --rebase
-        git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update: Multi-state violations $(date +'%Y-%m-%d')" && git push)
+        if git diff --staged --quiet; then
+          echo "No changes to commit"
+        else
+          git commit -m "Auto-update: Multi-state violations $(date +'%Y-%m-%d')"
+          git pull --rebase origin main
+          git push
+        fi
