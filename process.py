@@ -49,10 +49,28 @@ def process_echo_data():
         print("\n=== SUMMARY ===")
         print(f"Successfully processed {len(water_files)} water-related files:")
         
+        total_rows = 0
         for file_info in water_files:
             print(f"  - {file_info['filename']}: {file_info['rows']} rows")
+            total_rows += file_info['rows']
         
-        # Save a combined summary file
+        # Combine all violation data
+        print(f"\nCombining {total_rows} total rows...")
+        all_data = []
+        for file_info in water_files:
+            df = file_info['data']
+            df['source_file'] = file_info['filename']
+            all_data.append(df)
+        
+        # Create combined dataset
+        combined_df = pd.concat(all_data, ignore_index=True)
+        
+        # Save combined data
+        combined_file = f'outputs/all_water_violations_{datetime.now().strftime("%Y%m%d")}.csv'
+        combined_df.to_csv(combined_file, index=False)
+        print(f"Saved combined data to: {combined_file} ({len(combined_df)} rows)")
+        
+        # Also save summary
         summary_data = []
         for file_info in water_files:
             summary_data.append({
@@ -64,7 +82,7 @@ def process_echo_data():
         summary_df = pd.DataFrame(summary_data)
         summary_file = f'outputs/processing_summary_{datetime.now().strftime("%Y%m%d")}.csv'
         summary_df.to_csv(summary_file, index=False)
-        print(f"\nSaved summary to: {summary_file}")
+        print(f"Saved summary to: {summary_file}")
         
         return True
     else:
