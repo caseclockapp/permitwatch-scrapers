@@ -1,0 +1,33 @@
+name: EPA ECHO Daily Scraper
+
+on:
+  schedule:
+    # Runs at 2 AM EST every day
+    - cron: '0 7 * * *'
+  workflow_dispatch:  # Allows manual trigger
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install dependencies
+      run: |
+        pip install requests pandas
+    
+    - name: Run EPA scraper
+      run: python epa_echo_scraper.py
+    
+    - name: Commit and push if changed
+      run: |
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "github-actions[bot]"
+        git add scraped_data/*.csv
+        git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update: EPA violations $(date +'%Y-%m-%d')" && git push)
