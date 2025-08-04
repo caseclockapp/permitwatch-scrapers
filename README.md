@@ -3,6 +3,7 @@
 Private automated data collection for environmental compliance monitoring.
 
 ## States Covered
+- Texas (TX)
 - Virginia (VA)
 - West Virginia (WV)
 - Pennsylvania (PA)
