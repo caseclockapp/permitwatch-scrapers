@@ -1,0 +1,185 @@
+state,facility_name,permit_number,violation_date,violation_type,status,source_file,parameter
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250813_085603.csv,
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250930_082112.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250831_081745.csv,
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250917_081946.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250830_081735.csv,
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250817_081943.csv,Total Nitrogen
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250922_082113.csv,Total Nitrogen
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250827_082010.csv,Total Nitrogen
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250814_085501.csv,
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250903_081946.csv,Total Nitrogen
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250826_082143.csv,
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250919_081937.csv,Total Nitrogen
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250828_082003.csv,
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250822_082040.csv,Total Nitrogen
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250819_082053.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250908_082154.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250925_082015.csv,
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250808_085833.csv,Total Nitrogen
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250901_082208.csv,
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250803_181117.csv,Total Nitrogen
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250806_090018.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250923_082008.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250926_082118.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250905_081944.csv,
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250916_082049.csv,
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250914_081719.csv,
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250808_085833.csv,
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250923_082008.csv,
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250821_082038.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250906_081702.csv,
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250929_082214.csv,Total Nitrogen
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250819_082053.csv,Total Nitrogen
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250915_082030.csv,
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250904_081937.csv,
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250823_081801.csv,Total Nitrogen
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250803_181117.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250808_085833.csv,
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250830_081735.csv,Total Nitrogen
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250820_082048.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250902_082045.csv,
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250902_082045.csv,Total Nitrogen
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250912_081918.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250803_152951.csv,
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250820_082048.csv,Total Nitrogen
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250919_081937.csv,
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250911_082000.csv,Total Nitrogen
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250925_082015.csv,Total Nitrogen
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250814_085501.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250803_173741.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250820_082048.csv,
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250913_081704.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250909_082048.csv,
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250915_082030.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250812_085411.csv,
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250913_081704.csv,Total Nitrogen
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250904_081937.csv,Total Nitrogen
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250825_082219.csv,
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250924_082036.csv,
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250910_082008.csv,Total Nitrogen
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250803_181117.csv,
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250818_082349.csv,Total Nitrogen
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250822_082040.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250912_081918.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250822_082040.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250930_082112.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250927_081709.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250919_081937.csv,
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250825_082219.csv,Total Nitrogen
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250815_082120.csv,Total Nitrogen
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250807_085914.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250928_081704.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250816_081918.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250828_082003.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250815_082120.csv,
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250906_081702.csv,
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250806_090018.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250807_085914.csv,
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250803_173741.csv,
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250925_082015.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250818_082349.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250904_081937.csv,
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250907_081653.csv,Total Nitrogen
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250817_081943.csv,
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250908_082154.csv,
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250806_090018.csv,Total Nitrogen
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250823_081801.csv,
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250821_082038.csv,Total Nitrogen
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250826_082143.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250918_081926.csv,
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250804_090008.csv,Total Nitrogen
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250831_081745.csv,Total Nitrogen
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250826_082143.csv,Total Nitrogen
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250824_081744.csv,
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250818_082349.csv,
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250926_082118.csv,Total Nitrogen
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250804_090008.csv,
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250811_085717.csv,
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250911_082000.csv,
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250920_081732.csv,
+WV,Sample WV Mine,WV0000001,2024-02-01,Discharge Monitoring Report,Pending,WV_violations_20250803_152951.csv,pH
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250903_081946.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250819_082053.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250913_081704.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250921_081637.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250903_081946.csv,
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250906_081702.csv,Total Nitrogen
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250907_081653.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250929_082214.csv,
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250803_173741.csv,Total Nitrogen
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250809_084904.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250911_082000.csv,
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250902_082045.csv,
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250805_085948.csv,
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250910_082008.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250924_082036.csv,
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250921_081637.csv,Total Nitrogen
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250804_090008.csv,
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250828_082003.csv,Total Nitrogen
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250921_081637.csv,
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250926_082118.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250805_085948.csv,
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250929_082214.csv,
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250812_085411.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250901_082208.csv,
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250916_082049.csv,Total Nitrogen
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250831_081745.csv,
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250927_081709.csv,Total Nitrogen
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250829_081942.csv,
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250918_081926.csv,Total Nitrogen
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250824_081744.csv,Total Nitrogen
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250816_081918.csv,Total Nitrogen
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250917_081946.csv,Total Nitrogen
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250812_085411.csv,Total Nitrogen
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250829_081942.csv,Total Nitrogen
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250809_084904.csv,
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250918_081926.csv,
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250809_084904.csv,Total Nitrogen
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250813_085603.csv,
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250803_152951.csv,Total Nitrogen
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250928_081704.csv,Total Nitrogen
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250912_081918.csv,Total Nitrogen
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250927_081709.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250914_081719.csv,
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250905_081944.csv,Total Nitrogen
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250811_085717.csv,Total Nitrogen
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250928_081704.csv,
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250920_081732.csv,Total Nitrogen
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250823_081801.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250817_081943.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250907_081653.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250810_084818.csv,
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250908_082154.csv,Total Nitrogen
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250915_082030.csv,Total Nitrogen
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250920_081732.csv,
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250914_081719.csv,Total Nitrogen
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250924_082036.csv,Total Nitrogen
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250810_084818.csv,
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250805_085948.csv,Total Nitrogen
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250916_082049.csv,
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250923_082008.csv,Total Nitrogen
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250930_082112.csv,Total Nitrogen
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250829_081942.csv,
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250807_085914.csv,Total Nitrogen
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250827_082010.csv,
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250813_085603.csv,Total Nitrogen
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250909_082048.csv,Total Nitrogen
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250905_081944.csv,
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250824_081744.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250827_082010.csv,
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250803_152951.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250910_082008.csv,
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250816_081918.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250821_082038.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250825_082219.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250917_081946.csv,
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250922_082113.csv,
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250815_082120.csv,
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250814_085501.csv,Total Nitrogen
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250830_081735.csv,
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250922_082113.csv,
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250901_082208.csv,Total Nitrogen
+PA,Sample PA Facility,PA0000001,2024-01-20,NPDES Violation,Active,PA_violations_20250909_082048.csv,
+MD,Sample MD Facility,MD0000001,2024-01-25,Water Quality Violation,Under Review,MD_violations_20250810_084818.csv,Total Nitrogen
+VA,Sample VA Facility,VA0000001,2024-01-15,Effluent Limit Exceedance,Unresolved,VA_violations_20250811_085717.csv,
